@@ -26,6 +26,12 @@ public class Tiktaktoe {
                     //jugar solo
                     //mostramos el tablero
                     tablero_juego.mostrar();
+                    //
+                    turno();
+                    //mostrar tablero despues de poner ficha
+                    tablero_juego.mostrar();
+                    //al finalizar se cambia de turno
+                    turno = !turno;
                                        
                     break; 
                 case 2: 
@@ -39,8 +45,9 @@ public class Tiktaktoe {
             
         }while(!fin);   
     }
-    public void turno(){
+    static public void turno(){
         boolean turnofin = true;
+        
         while(turnofin){
             //aseguramos que sean columnas
             System.out.println("Elige una columna");
@@ -57,33 +64,19 @@ public class Tiktaktoe {
                 System.out.println("un numero entre 1 y 3"
                         + "\nElige una fila");
                 fila = sc.nextInt();
-            }
-            //ajustamos columnas porque la matriz es mas grande
-            if (column==2) {
-                column=3;
-            }
-            if (column==3) {
-                column=5;
-            }
-            //ajustamos a filas porque la matriz es mas grande
-            if (fila==2) {
-                fila=3;
-            }
-            if (fila==3) {
-                fila=5;
-            }
+            }           
             
-            
-            if (tablero_juego.hayAlgo(column, fila)) {
+            if (tablero_juego.hayAlgo(fila, column)) {
                 System.out.println("ya hay una ficha ahí");
-            }else turnofin=false;
+                //
+            }else
+                
             
             //colocamos la ficha ahí
-            if (turnofin) {
-                
-            }
-            
-        };
+            tablero_juego.ponerFicha(fila, column, turno);
+            //terminar turno
+                turnofin=false;
+        }
         
     }
     public void cambioTurno(){
