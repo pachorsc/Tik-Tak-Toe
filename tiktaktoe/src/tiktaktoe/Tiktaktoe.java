@@ -1,9 +1,11 @@
 
 package tiktaktoe;
 import java.util.Scanner;
+
+
 public class Tiktaktoe {
     static Scanner sc = new Scanner(System.in);
-    static tablero tablero_juego = new tablero();
+    static Tablero tablero_partida;
     static boolean turno= true;
 
 
@@ -13,7 +15,7 @@ public class Tiktaktoe {
         
         do{
             //creamos el tablero
-            
+            tablero_partida = new Tablero();
             
             //opciones del juego
             System.out.println("Elige la opcion: "
@@ -25,11 +27,11 @@ public class Tiktaktoe {
                 case 1: 
                     //jugar solo
                     //mostramos el tablero
-                    tablero_juego.mostrar();
+                    tablero_partida.mostrar();
                     //
-                    turno();
+                    Tiktaktoe.turno();
                     //mostrar tablero despues de poner ficha
-                    tablero_juego.mostrar();
+                    tablero_partida.mostrar();
                     //al finalizar se cambia de turno
                     turno = !turno;
                                        
@@ -66,20 +68,20 @@ public class Tiktaktoe {
                 fila = sc.nextInt();
             }           
             
-            if (tablero_juego.hayAlgo(fila, column)) {
+            if (tablero_partida.hayAlgo(fila, column)) {
                 System.out.println("ya hay una ficha ahí");
                 //
             }else
                 
             
             //colocamos la ficha ahí
-            tablero_juego.ponerFicha(fila, column, turno);
+            tablero_partida.ponerFicha(fila, column, turno);
             //terminar turno
                 turnofin=false;
         }
         
     }
-    public void cambioTurno(){
+    static public void cambioTurno(){
             turno = !turno;
         }
 }

@@ -2,13 +2,13 @@
 package tiktaktoe;
 
 
-public class tablero {
+public class Tablero {
     String[] [] tablero_juego = new String[3][3];
     
-    public tablero() {
+    public Tablero() {
         //tablero
-        for (int i = 0; i < 10; i++) {
-            for (int j = 0; j < 10; j++) {
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
                 tablero_juego[i][j] = " ";
             }
         }
@@ -16,13 +16,9 @@ public class tablero {
     
     public void mostrar(){
         //al mostrar se contatena para hacer la froma del tablero
-        for (int i = 0; i < 5; i++) {
-            for (int j = 0; j < 5; j++) {
-                System.out.print(tablero_juego[i][j]);
-                if (true) {
-                    
-                }
-                
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                System.out.print(tablero_juego[i][j]);              
             }
             System.out.println("");
         }
