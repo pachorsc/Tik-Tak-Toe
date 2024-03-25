@@ -18,10 +18,16 @@ public class Tablero {
         //al mostrar se contatena para hacer la froma del tablero
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-                System.out.print(tablero_juego[i][j]);              
+                if (j==1) {
+                    System.out.print("|"+parte_tablero_get(i,j)+"|");
+                }
+                else System.out.print(tablero_juego[i][j]);                         
             }
-            System.out.println("");
+            if (i!=2) {
+                System.out.println("\n-+-+-");
+            }
         }
+        System.out.println("\n");
     }
 
     public String[][] getTablero_juego() {
@@ -47,6 +53,11 @@ public class Tablero {
         }
         else tablero_juego [a][b] ="O";
         
+    }
+    public String parte_tablero_get(int a, int b){
+        String res;
+        res = tablero_juego[a][b];
+        return res;
     }
     
 }

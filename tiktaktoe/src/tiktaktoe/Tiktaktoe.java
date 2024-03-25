@@ -7,6 +7,7 @@ public class Tiktaktoe {
     static Scanner sc = new Scanner(System.in);
     static Tablero tablero_partida;
     static boolean turno= true;
+    static boolean partida = true;
 
 
     public static void main(String[] args) {
@@ -25,6 +26,12 @@ public class Tiktaktoe {
             int opc = sc.nextInt();
             switch (opc){
                 case 1: 
+                    //partida con el bot
+                    while (partida ==true){
+                    
+                        //turno jugador 1
+                        System.out.println("Turno jugador");
+                    while(turno==true){
                     //jugar solo
                     //mostramos el tablero
                     tablero_partida.mostrar();
@@ -33,7 +40,36 @@ public class Tiktaktoe {
                     //mostrar tablero despues de poner ficha
                     tablero_partida.mostrar();
                     //al finalizar se cambia de turno
-                    turno = !turno;
+                    turno = false;
+                        }
+                    
+                    //turno del bot
+                    //Turno del bot
+                    while (!turno){
+                        System.out.println("Turno del Bot");
+                    
+                    //se genera la posicion del turno aleatorio
+                    int a1 = (int) (Math.random()*3);
+                    int a2 = (int) (Math.random()*3);
+                    
+                    //chequeamos que la posicion no este ya ocupada
+                    while(tablero_partida.hayAlgo(a1, a2)){
+                         a1 = (int) (Math.random()*3);
+                         a2 = (int) (Math.random()*3);
+                    }
+                    //ponemos la ficha
+                    tablero_partida.ponerFicha(a1, a2, turno);
+                    
+                    //mostramos el turno del bot
+                    tablero_partida.mostrar();
+                    
+                    //al finalizar se cambia de turno
+                    turno = true;
+                    }
+                    }
+                    
+                    
+                    
                                        
                     break; 
                 case 2: 
