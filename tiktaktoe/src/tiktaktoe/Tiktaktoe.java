@@ -43,6 +43,12 @@ public class Tiktaktoe {
                     turno = false;
                         }
                     
+                    //si despues de poner la ficha gana entonces salimos del bucle partida
+                        if (tablero_partida.victoria()) {
+                            System.out.println("El jugador gano la partida, Bien jugado\nFin de la partida\n");
+                            break;
+                        }
+                    
                     //turno del bot
                     //Turno del bot
                     while (!turno){
@@ -85,11 +91,13 @@ public class Tiktaktoe {
     }
     static public void turno(){
         boolean turnofin = true;
+        int fila=0;
+        int column=0;
         
         while(turnofin){
             //aseguramos que sean columnas
             System.out.println("Elige una columna");
-            int column = sc.nextInt();
+            column = sc.nextInt();
             while (column>3 || column<0){
                 System.out.println("un numero entre 1 y 3"
                         + "\nElige una columna");
@@ -97,7 +105,7 @@ public class Tiktaktoe {
             }
             //aseguramos que sean fias de verdad
             System.out.println("Elige la fila");
-            int fila = sc.nextInt();
+            fila = sc.nextInt();
             while (fila>3 || fila<0){
                 System.out.println("un numero entre 1 y 3"
                         + "\nElige una fila");
@@ -107,14 +115,14 @@ public class Tiktaktoe {
             if (tablero_partida.hayAlgo(fila, column)) {
                 System.out.println("ya hay una ficha ahí");
                 //
-            }else
-                
-            
+            }else{
             //colocamos la ficha ahí
             tablero_partida.ponerFicha(fila, column, turno);
             //terminar turno
-                turnofin=false;
+                turnofin=false;             
+            }
         }
+        
         
     }
     static public void cambioTurno(){

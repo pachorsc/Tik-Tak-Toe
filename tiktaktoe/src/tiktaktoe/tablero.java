@@ -59,5 +59,24 @@ public class Tablero {
         res = tablero_juego[a][b];
         return res;
     }
+    public boolean victoria(){
+        boolean ganador = false;
+        
+               
+        for (int i = 0; i < 3; i++) {
+            //condiciones en horizotal 
+            //si la fila entera esta llena de 'X' o 'O' entonces ganador = a true
+            if (tablero_juego[i][0].equals("X") & tablero_juego[i][1].equals("X") & tablero_juego[i][0].equals("X") || tablero_juego[i][0].equals("O") & tablero_juego[i][1].equals("O") & tablero_juego[i][0].equals("O")) {
+                ganador = true;
+            }
+            //Vertical
+            //si alguna columna tiene los 3 espacios llenos de 'X' o 'O'
+            if (tablero_juego[0][i].equals("X") & tablero_juego[1][i].equals("X") & tablero_juego[2][i].equals("X") || tablero_juego[0][i].equals("O") & tablero_juego[1][i].equals("O") & tablero_juego[2][i].equals("O") ) {
+                ganador = true;
+            }
+        }
+        
+        return ganador;
+    }
     
 }
