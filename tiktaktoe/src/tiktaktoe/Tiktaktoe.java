@@ -72,14 +72,65 @@ public class Tiktaktoe {
                     //al finalizar se cambia de turno
                     turno = true;
                     }
+                    //si despues de poner la ficha gana entonces salimos del bucle partida
+                        if (tablero_partida.victoria()) {
+                            System.out.println("El Bot gano la partida\nFin de la partida\n");
+                            break;
+                        }
                     }
-                    
-                    
-                    
-                                       
+                 
                     break; 
                 case 2: 
                     //2Jugadres
+                    while (partida ==true){
+                        
+                    //turno jugador 1                    
+                    while(turno==true){
+                    System.out.println("Turno jugador 1");
+                    
+                    //mostramos el tablero
+                    tablero_partida.mostrar();
+                    //
+                    Tiktaktoe.turno();
+                    //mostrar tablero despues de poner ficha
+                    tablero_partida.mostrar();
+                    //al finalizar se cambia de turno
+                    turno = false;
+                        }
+                    
+                    //si es empate se sale
+                        if (tablero_partida.empate()) {
+                             System.out.println("Empate, Ningun jugador ha ganado\nFin de la partida\n");
+                            break;
+                        }
+                    
+                    //si despues de poner la ficha gana entonces salimos del bucle partida
+                        if (tablero_partida.victoria()) {
+                            System.out.println("El jugador 1 gano la partida, Bien jugado\nFin de la partida\n");
+                            break;
+                        }
+                    
+                    //turno del J2
+                    
+                    while(turno==false){
+                    System.out.println("Turno jugador 2");
+                        
+                    //mostramos el tablero
+                    tablero_partida.mostrar();
+                    //Turno del jugador 2
+                    Tiktaktoe.turno();
+                    //mostrar tablero despues de poner ficha
+                    tablero_partida.mostrar();
+                    //al finalizar se cambia de turno
+                    turno = true;
+                        }
+                    
+                    //si despues de poner la ficha gana entonces salimos del bucle partida
+                        if (tablero_partida.victoria()) {
+                            System.out.println("El Jugador 2 gano la partida, Bien jugado\nFin de la partida\n");
+                            break;
+                        }
+                    }
                     break;
                 case 3:
                     //terminar juego
@@ -98,16 +149,18 @@ public class Tiktaktoe {
             //aseguramos que sean columnas
             System.out.println("Elige una columna");
             column = sc.nextInt();
-            while (column>3 || column<0){
-                System.out.println("un numero entre 1 y 3"
+            
+            while (column>2 || column<0){
+                System.out.println("un numero entre 0 y 2"
                         + "\nElige una columna");
                 column = sc.nextInt();
             }
             //aseguramos que sean fias de verdad
             System.out.println("Elige la fila");
             fila = sc.nextInt();
-            while (fila>3 || fila<0){
-                System.out.println("un numero entre 1 y 3"
+            
+            while (fila>2 || fila<0){
+                System.out.println("un numero entre 0 y 2"
                         + "\nElige una fila");
                 fila = sc.nextInt();
             }           

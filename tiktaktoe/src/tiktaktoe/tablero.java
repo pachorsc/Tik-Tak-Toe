@@ -62,11 +62,11 @@ public class Tablero {
     public boolean victoria(){
         boolean ganador = false;
         
-               
+        //ganar con 3 verticales o horizontales       
         for (int i = 0; i < 3; i++) {
             //condiciones en horizotal 
             //si la fila entera esta llena de 'X' o 'O' entonces ganador = a true
-            if (tablero_juego[i][0].equals("X") & tablero_juego[i][1].equals("X") & tablero_juego[i][0].equals("X") || tablero_juego[i][0].equals("O") & tablero_juego[i][1].equals("O") & tablero_juego[i][0].equals("O")) {
+            if (tablero_juego[i][0].equals("X") & tablero_juego[i][1].equals("X") & tablero_juego[i][2].equals("X") || tablero_juego[i][0].equals("O") & tablero_juego[i][1].equals("O") & tablero_juego[i][2].equals("O")) {
                 ganador = true;
             }
             //Vertical
@@ -75,8 +75,46 @@ public class Tablero {
                 ganador = true;
             }
         }
+        //ganar con 3 en diagonal
+        if (
+           //diagonal 2,0 a la 0,2
+            tablero_juego[2][0].equals("X") 
+          & tablero_juego[1][1].equals("X") 
+          & tablero_juego[0][2].equals("X") 
+          //0,0 a la 2,2
+         ||tablero_juego[0][0].equals("X") 
+         & tablero_juego[1][1].equals("X") 
+         & tablero_juego[2][2].equals("X")
+                
+          //diagonal 2,0 a la 0,2
+         ||tablero_juego[2][0].equals("O") 
+         & tablero_juego[1][1].equals("O") 
+         & tablero_juego[0][2].equals("O")
+         //0,0 a la 2,2
+         ||tablero_juego[0][0].equals("O") 
+         & tablero_juego[1][1].equals("O") 
+         & tablero_juego[2][2].equals("O")) {
+            ganador = true;
+        }
         
         return ganador;
+    }
+    public boolean empate(){
+        boolean empat = false;
+        int cont =0;
+        for (int i = 0; i < 2; i++) {
+            for (int j = 0; j < 2; j++) {
+                if (tablero_juego [i][j].equals("X") || tablero_juego [i][j].equals("O")) {
+                    cont++;
+                }
+            }
+        }
+        if (cont==9) {
+            empat = true;
+        }
+        
+        
+        return empat;
     }
     
 }
